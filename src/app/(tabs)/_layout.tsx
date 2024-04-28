@@ -72,17 +72,6 @@ function TabsLayout() {
           ),
         }}
       />
-
-      <Tabs.Screen
-        name="create"
-        options={{
-          title: 'Create',
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <TabIcon icon={icons.plus} name="Create" focused={focused} color={color} />
-          ),
-        }}
-      />
     </Tabs>
   );
 }

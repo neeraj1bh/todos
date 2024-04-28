@@ -21,7 +21,7 @@ function Pending() {
           title="No Todos Found"
           subtitle="You have completed all your tasks!"
           buttonText="Create Todo"
-          route="/create"
+          route="/home"
         />
       )}
     </>

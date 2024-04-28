@@ -10,24 +10,15 @@ type TodoItemProps = {
   onDelete: () => void;
 };
 
-const countWords = (text) => {
-  const trimmedText = text.trim();
-  const words = trimmedText.split(/\s+/);
-  const wordCount = words.length;
-
-  return wordCount;
-};
-
 function TodoItem({ todo: { text, status }, onToggle, onDelete }: TodoItemProps) {
   return (
     <View className="flex flex-row items-center w-full justify-between py-2">
       <View
         onTouchEnd={onToggle}
-        className="flex border flex-row min-h-[70px] border-gray-400 rounded-xl py-2 px-4 w-[270px] items-center"
+        className="flex border flex-row min-h-[48px] border-gray-400 rounded-xl py-2 px-4 w-[270px] items-center"
       >
         <Checkbox className="mr-2" value={status === STATUS.COMPLETED} />
         <Text
-          numberOfLines={countWords(text) > 1 ? 100 : 1}
           className={`font-psemibold truncate break-words  text-lg ${status === STATUS.COMPLETED ? 'line-through' : ''}`}
         >
           {text}

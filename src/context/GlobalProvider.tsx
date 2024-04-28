@@ -50,7 +50,7 @@ function GlobalProvider({ children }: GlobalProviderProps) {
       try {
         const newTodo = { text: todoText, status: STATUS.PENDING, key: uuidv4() };
 
-        const updatedTodos = [...todos, newTodo];
+        const updatedTodos = [newTodo, ...todos];
 
         await AsyncStorage.setItem('@todos', JSON.stringify(updatedTodos));
         setTodos(updatedTodos);
