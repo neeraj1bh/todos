@@ -1,0 +1,12 @@
+{
+  "extends": ["expo/tsconfig.base"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "jsx": "react"
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["__tests__/**/*-test.ts"]
+}
