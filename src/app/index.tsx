@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { router } from 'expo-router';
 import { View, Text, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import CustomButton from '@/components';
+import { CustomButton } from '@/components';
 
 function Welcome() {
   return (
