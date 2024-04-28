@@ -13,6 +13,7 @@ import {
   Poppins_800ExtraBold,
   Poppins_900Black,
 } from '@expo-google-fonts/poppins';
+import GlobalProvider from '@/context/GlobalProvider';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -45,10 +46,12 @@ function RootLayout() {
     return null;
   }
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-    </Stack>
+    <GlobalProvider>
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+      </Stack>
+    </GlobalProvider>
   );
 }
 

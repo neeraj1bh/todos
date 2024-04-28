@@ -31,7 +31,7 @@ function Welcome() {
           <CustomButton
             title="Get Started"
             handlePress={() => router.push('/home')}
-            containerStyles="w-full mt-7"
+            containerStyles="w-full mt-7 min-h-[62px]"
           />
         </View>
       </ScrollView>

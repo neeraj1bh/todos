@@ -1,25 +1,26 @@
+import { Todo } from '@/interfaces';
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-enum STATUS {
-  PENDING = 'pending',
-  COMPLETED = 'completed',
-}
+import TodoItem from './TodoItem';
 
 type Props = {
-  todos: { status: STATUS; text: string }[];
+  todos: Todo[];
+  onToggle: (key: string) => void;
+  onDelete: (key: string) => void;
 };
 
-function TodoList({ todos }: Props) {
+function TodoList({ todos, onToggle, onDelete }: Props) {
   return (
-    <SafeAreaView className="p-4 bg-white flex-1">
+    <SafeAreaView className="p-4 bg-white flex-1 w-full">
       <FlatList
         data={todos}
         renderItem={({ item }) => (
-          <View className="border border-gray-400 rounded px-4 py-2 mb-2">
-            <Text>{item.text}</Text>
-          </View>
+          <TodoItem
+            todo={item}
+            onToggle={() => onToggle(item.key)}
+            onDelete={() => onDelete(item.key)}
+          />
         )}
         keyExtractor={(item, index) => index.toString()}
       />
