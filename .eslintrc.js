@@ -25,5 +25,6 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.jsx', '.tsx'] }],
     camelcase: 'off',
     'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
+    'react/jsx-no-useless-fragment': 'off',
   },
 };

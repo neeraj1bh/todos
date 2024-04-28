@@ -1,29 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
-import loadData from '@/utils/todoUtils';
-import { useIsFocused } from '@react-navigation/native';
+import React, { useMemo } from 'react';
 import { TodoList } from '@/components';
+import { STATUS } from '@/interfaces';
+import NoTodosScreen from '@/components/NoTodosScreen';
+import { useGlobalContext } from '@/context/GlobalProvider';
 
 function Pending() {
-  const [todos, setTodos] = useState([]);
-  const isFocused = useIsFocused();
+  const { todos: allTodos, handleDelete, handleToggle } = useGlobalContext();
 
-  useEffect(() => {
-    const loadTodos = async () => {
-      if (isFocused) {
-        try {
-          const filteredTodos = await loadData('pending');
-          setTodos(filteredTodos);
-        } catch (error) {
-          Alert.alert('Error', error.message);
-        }
-      }
-    };
+  const todos = useMemo(
+    () => allTodos.filter((todo) => todo.status === STATUS.PENDING),
+    [allTodos],
+  );
 
-    loadTodos();
-  }, [isFocused]);
-
-  return <TodoList todos={todos} />;
+  return (
+    <>
+      {todos.length ? (
+        <TodoList todos={todos} onDelete={handleDelete} onToggle={handleToggle} />
+      ) : (
+        <NoTodosScreen
+          title="No Todos Found"
+          subtitle="You have completed all your tasks!"
+          buttonText="Create Todo"
+          route="/create"
+        />
+      )}
+    </>
+  );
 }
 
 export default Pending;
