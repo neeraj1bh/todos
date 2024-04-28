@@ -3,7 +3,7 @@ import React from 'react';
 
 type Props = {
   title: string;
-  handlePress: () => void;
+  handlePress?: () => void;
   containerStyles?: string;
   textStyles?: string;
 };
@@ -23,6 +23,7 @@ function CustomButton({
 }
 
 CustomButton.defaultProps = {
+  handlePress: () => {},
   containerStyles: '',
   textStyles: '',
 };

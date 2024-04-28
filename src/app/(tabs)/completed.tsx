@@ -1,13 +1,29 @@
-import { Text } from 'react-native';
-import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React, { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
+import loadData from '@/utils/todoUtils';
+import { useIsFocused } from '@react-navigation/native';
+import { TodoList } from '@/components';
 
 function Completed() {
-  return (
-    <SafeAreaView>
-      <Text>Completed Page</Text>
-    </SafeAreaView>
-  );
+  const [todos, setTodos] = useState([]);
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    const loadTodos = async () => {
+      if (isFocused) {
+        try {
+          const filteredTodos = await loadData('completed');
+          setTodos(filteredTodos);
+        } catch (error) {
+          Alert.alert('Error', error.message);
+        }
+      }
+    };
+
+    loadTodos();
+  }, [isFocused]);
+
+  return <TodoList todos={todos} />;
 }
 
 export default Completed;
