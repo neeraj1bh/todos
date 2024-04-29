@@ -21,8 +21,8 @@ The Todo App is a simple yet powerful task management tool that allows users to 
 
 ## Screens
 
-| ![Todo App Screen 1](https://github.com/neeraj1bh/todos/assets/55753068/26469230-9f8d-460f-9485-97e12cc33c3c) | ![Todo App Screen 2](https://github.com/neeraj1bh/todos/assets/55753068/89f66017-1dc3-45f1-ada3-08819791a1fc) | ![Todo App Screen 3](https://github.com/neeraj1bh/todos/assets/55753068/56eb1ad6-3a24-4eb1-8175-457c89c79fa2) | ![Todo App Screen 4](https://github.com/neeraj1bh/todos/assets/55753068/b4551fcd-e416-49b7-8c1c-ece3621ff80f) |
-| --- | --- | --- | --- |
+| ![Todo App Screen 1](https://github.com/neeraj1bh/todos/assets/55753068/f4c44b2d-33a3-4aab-a3ad-2766da11d9f6) | ![Todo App Screen 2](https://github.com/neeraj1bh/todos/assets/55753068/26469230-9f8d-460f-9485-97e12cc33c3c) | ![Todo App Screen 3](https://github.com/neeraj1bh/todos/assets/55753068/89f66017-1dc3-45f1-ada3-08819791a1fc) | ![Todo App Screen 4](https://github.com/neeraj1bh/todos/assets/55753068/56eb1ad6-3a24-4eb1-8175-457c89c79fa2) | ![Todo App Screen 5](https://github.com/neeraj1bh/todos/assets/55753068/b4551fcd-e416-49b7-8c1c-ece3621ff80f) |
+| --- | --- | --- | --- | --- |
 
 
 ## Installation and Usage
