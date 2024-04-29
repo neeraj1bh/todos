@@ -1,4 +1,4 @@
-import { STATUS, Todo } from '@/interfaces';
+import { SCREENS, STATUS, Todo } from '@/interfaces';
 import React, {
   createContext, useContext, useEffect, useMemo, useState,
 } from 'react';
@@ -17,6 +17,8 @@ type GlobalContextType = {
   addTodo: (todoText: string) => void;
   handleToggle: (key: string) => void;
   handleDelete: (key: string) => void;
+  activeTab: number;
+  changeActiveTab: (screen: SCREENS) => void;
 };
 
 const GlobalContext = createContext({} as GlobalContextType);
@@ -29,6 +31,17 @@ type GlobalProviderProps = {
 function GlobalProvider({ children }: GlobalProviderProps) {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState(0);
+
+  const changeActiveTab = (screen: SCREENS) => {
+    if (screen === SCREENS.HOME) {
+      setActiveTab(0);
+    } else if (screen === SCREENS.PENDING) {
+      setActiveTab(1);
+    } else {
+      setActiveTab(2);
+    }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -97,8 +110,20 @@ function GlobalProvider({ children }: GlobalProviderProps) {
       addTodo,
       handleToggle,
       handleDelete,
+      activeTab,
+      changeActiveTab,
     }),
-    [todos, setTodos, loading, setLoading, addTodo, handleToggle, handleDelete],
+    [
+      todos,
+      setTodos,
+      loading,
+      setLoading,
+      addTodo,
+      handleToggle,
+      handleDelete,
+      activeTab,
+      changeActiveTab,
+    ],
   );
 
   return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>;
