@@ -8,3 +8,9 @@ export type Todo = {
   status: STATUS;
   key: string;
 };
+
+export enum SCREENS {
+  HOME = 'home',
+  PENDING = 'pending',
+  COMPLETED = 'completed',
+}

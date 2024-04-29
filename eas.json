@@ -1,0 +1,22 @@
+{
+  "cli": {
+    "version": ">= 7.8.5"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {
+        "android":{
+            "serviceAccountKeyPath": "../expo-service-account-421807-1894770f9c61.json"
+        }
+    }
+  }
+}

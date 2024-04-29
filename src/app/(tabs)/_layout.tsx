@@ -4,6 +4,9 @@ import {
 import React from 'react';
 import { Tabs } from 'expo-router';
 import icons from '@/constants';
+import { StatusBar } from 'expo-status-bar';
+import { useGlobalContext } from '@/context/GlobalProvider';
+import { SCREENS } from '@/interfaces';
 
 type Props = {
   icon: ImageSourcePropType;
@@ -25,54 +28,84 @@ function TabIcon({
   );
 }
 
+enum StatusBarStyleEnum {
+  LIGHT = 'light',
+  DARK = 'dark',
+  AUTO = 'auto',
+  INVERTED = 'inverted',
+}
+
 function TabsLayout() {
+  const { activeTab, changeActiveTab } = useGlobalContext();
+
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: '#FFA001',
-        tabBarInactiveTintColor: '#CDCDE0',
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: '#161622',
-          borderTopWidth: 1,
-          borderTopColor: '#232533',
-          height: 84,
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: 'All',
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <TabIcon icon={icons.home} name="All" focused={focused} color={color} />
-          ),
-        }}
+    <>
+      <StatusBar
+        style={activeTab === 0 ? StatusBarStyleEnum.LIGHT : StatusBarStyleEnum.DARK}
+        backgroundColor={activeTab === 0 ? '#161622' : '#FFFFFF'}
       />
+      <Tabs
+        screenOptions={{
+          tabBarActiveTintColor: '#FFA001',
+          tabBarInactiveTintColor: '#CDCDE0',
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            backgroundColor: '#161622',
+            borderTopWidth: 1,
+            borderTopColor: '#232533',
+            height: 84,
+          },
+        }}
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            title: 'All',
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon icon={icons.home} name="All" focused={focused} color={color} />
+            ),
+          }}
+          listeners={{
+            tabPress: () => {
+              changeActiveTab(SCREENS.HOME);
+            },
+          }}
+        />
 
-      <Tabs.Screen
-        name="completed"
-        options={{
-          title: 'Completed',
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <TabIcon icon={icons.completed} name="Completed" focused={focused} color={color} />
-          ),
-        }}
-      />
+        <Tabs.Screen
+          name="completed"
+          options={{
+            title: 'Completed',
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon icon={icons.completed} name="Completed" focused={focused} color={color} />
+            ),
+          }}
+          listeners={{
+            tabPress: () => {
+              changeActiveTab(SCREENS.COMPLETED);
+            },
+          }}
+        />
 
-      <Tabs.Screen
-        name="pending"
-        options={{
-          title: 'Pending',
-          headerShown: false,
-          tabBarIcon: ({ color, focused }) => (
-            <TabIcon icon={icons.pending} name="Pending" focused={focused} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+        <Tabs.Screen
+          name="pending"
+          options={{
+            title: 'Pending',
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon icon={icons.pending} name="Pending" focused={focused} color={color} />
+            ),
+          }}
+          listeners={{
+            tabPress: () => {
+              changeActiveTab(SCREENS.PENDING);
+            },
+          }}
+        />
+      </Tabs>
+    </>
   );
 }
 
